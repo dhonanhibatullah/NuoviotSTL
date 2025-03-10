@@ -1,0 +1,56 @@
+NVByteifyType           KEYWORD1
+NVBTYPE_NONE            KEYWORD3
+NVBTYPE_CHAR            KEYWORD3
+NVBTYPE_INT8            KEYWORD3
+NVBTYPE_INT16           KEYWORD3
+NVBTYPE_INT32           KEYWORD3
+NVBTYPE_INT64           KEYWORD3
+NVBTYPE_UINT8           KEYWORD3
+NVBTYPE_UINT16          KEYWORD3
+NVBTYPE_UINT32          KEYWORD3
+NVBTYPE_UINT64          KEYWORD3
+NVBTYPE_FLOAT           KEYWORD3
+NVBTYPE_DOUBLE          KEYWORD3
+NVBTYPE_ARRAY_CHAR      KEYWORD3
+NVBTYPE_ARRAY_INT8      KEYWORD3
+NVBTYPE_ARRAY_INT16     KEYWORD3
+NVBTYPE_ARRAY_INT32     KEYWORD3
+NVBTYPE_ARRAY_INT64     KEYWORD3
+NVBTYPE_ARRAY_UINT8     KEYWORD3
+NVBTYPE_ARRAY_UINT16    KEYWORD3
+NVBTYPE_ARRAY_UINT32    KEYWORD3
+NVBTYPE_ARRAY_UINT64    KEYWORD3
+NVBTYPE_ARRAY_FLOAT     KEYWORD3
+NVBTYPE_ARRAY_DOUBLE    KEYWORD3
+NVBTYPE_CUSTOM          KEYWORD3
+
+NVByteifyItem           KEYWORD1
+getType                 KEYWORD2
+getSize                 KEYWORD2
+getTotalSize            KEYWORD2
+getValue                KEYWORD2
+getBytes                KEYWORD2
+deleteMemory            KEYWORD2
+
+NVByteify               KEYWORD1
+setItem                 KEYWORD2
+getItemValue            KEYWORD2
+getItemType             KEYWORD2
+getItemSize             KEYWORD2
+getItemTotalSize        KEYWORD2
+getNumberOfItems        KEYWORD2
+getSize                 KEYWORD2
+byteify                 KEYWORD2
+
+NVList                  KEYWORD1
+append                  KEYWORD2
+insert                  KEYWORD2
+get                     KEYWORD2
+set                     KEYWORD2
+pop                     KEYWORD2
+length                  KEYWORD2
+
+NVQueue                 KEYWORD1
+enqueue                 KEYWORD2
+dequeue                 KEYWORD2
+length                  KEYWORD2
