@@ -311,7 +311,6 @@ NVByteifyItem::NVByteifyItem(const void *val, size_t size)
 
 NVByteifyItem::~NVByteifyItem()
 {
-    delete[] this->dataByte;
 }
 
 uint8_t NVByteifyItem::getType()
@@ -340,6 +339,11 @@ void NVByteifyItem::getValue(void *buffer)
 void NVByteifyItem::getBytes(uint8_t *buffer)
 {
     memcpy(buffer, this->dataByte, this->totalSize);
+}
+
+void NVByteifyItem::deleteMemory()
+{
+    delete[] this->dataByte;
 }
 
 NVByteify::NVByteify(const size_t n)
@@ -408,22 +412,43 @@ NVByteify::NVByteify(const uint8_t *bytes, size_t size)
 
 NVByteify::~NVByteify()
 {
+    for (size_t i = 0; i < this->itemNum; ++i)
+        this->items[i].deleteMemory();
+    delete[] this->items;
 }
 
 void NVByteify::setItem(uint32_t index, const NVByteifyItem &item)
 {
     uint32_t idx = (index >= this->itemNum) ? this->itemNum - 1 : index;
-    this->items[idx].~NVByteifyItem();
+    this->items[idx].deleteMemory();
     this->items[idx] = item;
 }
 
-void NVByteify::getItem(uint32_t index, void *buffer)
+void NVByteify::getItemValue(uint32_t index, void *buffer)
 {
     uint32_t idx = (index >= this->itemNum) ? this->itemNum - 1 : index;
     this->items[idx].getValue(buffer);
 }
 
-size_t NVByteify::getItemNum()
+uint8_t NVByteify::getItemType(uint32_t index)
+{
+    uint32_t idx = (index >= this->itemNum) ? this->itemNum - 1 : index;
+    return this->items[idx].getType();
+}
+
+size_t NVByteify::getItemSize(uint32_t index)
+{
+    uint32_t idx = (index >= this->itemNum) ? this->itemNum - 1 : index;
+    return this->items[idx].getSize();
+}
+
+size_t NVByteify::getItemTotalSize(uint32_t index)
+{
+    uint32_t idx = (index >= this->itemNum) ? this->itemNum - 1 : index;
+    return this->items[idx].getTotalSize();
+}
+
+size_t NVByteify::getNumberOfItems()
 {
     return this->itemNum;
 }

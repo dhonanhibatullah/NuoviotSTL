@@ -1,2 +1,7 @@
 .pio
 .vscode
+platformio.ini
+include
+lib
+test
+main.cpp
