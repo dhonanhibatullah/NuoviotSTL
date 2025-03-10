@@ -77,6 +77,7 @@ void loop()
     Serial.println(String(dataByte, HEX));
 
     // Halt!
+    Serial.println("_________[ DONE! ]_________");
     while (1)
     {
     }

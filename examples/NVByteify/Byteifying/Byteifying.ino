@@ -51,6 +51,7 @@ void loop()
     // We will see how to parse the bytes in 'Parsing' example
 
     // Halt!
+    Serial.println("_________[ DONE! ]_________");
     while (1)
     {
     }
