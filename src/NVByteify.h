@@ -235,6 +235,15 @@ public:
      */
     void getBytes(uint8_t *buffer);
 
+    /*
+     * @brief
+     * Delete the dynamically allocated memory.
+     *
+     * @note
+     * The destructor is not used to ease the logic and widen the usage.
+     */
+    void deleteMemory();
+
 private:
     uint8_t dataType = NVBTYPE_NONE;
     uint8_t *dataByte = nullptr;
@@ -276,7 +285,7 @@ public:
      * Set the item at an index.
      *
      * @param
-     * index index to set the item with, up to `.getItemNum() - 1`
+     * index index to set the item with, up to `.getNumberOfItems() - 1`
      * @param
      * item the item
      */
@@ -284,14 +293,50 @@ public:
 
     /*
      * @brief
-     * Get the item at an index.
+     * Get the item value at an index.
      *
      * @param
-     * index index to get the item, up to `.getItemNum() - 1`
+     * index index to get the item value, up to `.getNumberOfItems() - 1`
      * @param
      * buffer buffer to hold the value
      */
-    void getItem(uint32_t index, void *buffer);
+    void getItemValue(uint32_t index, void *buffer);
+
+    /*
+     * @brief
+     * Get the item type at an index.
+     *
+     * @param
+     * index index to get the item type, up to `.getNumberOfItems() - 1`
+     *
+     * @return
+     * The data type within `NVByteifyType` enums.
+     */
+    uint8_t getItemType(uint32_t index);
+
+    /*
+     * @brief
+     * Get the item size at an index.
+     *
+     * @param
+     * index index to get the item size, up to `.getNumberOfItems() - 1`
+     *
+     * @return
+     * The item size.
+     */
+    size_t getItemSize(uint32_t index);
+
+    /*
+     * @brief
+     * Get the item total size at an index.
+     *
+     * @param
+     * index index to get the item total size, up to `.getNumberOfItems() - 1`
+     *
+     * @return
+     * The item total size.
+     */
+    size_t getItemTotalSize(uint32_t index);
 
     /*
      * @brief
@@ -300,7 +345,7 @@ public:
      * @return
      * The number of items.
      */
-    size_t getItemNum();
+    size_t getNumberOfItems();
 
     /*
      * @brief
