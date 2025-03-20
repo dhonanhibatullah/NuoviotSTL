@@ -3,7 +3,265 @@
 
 #include <Arduino.h>
 
-template <typename T>
+class NVListItem
+{
+public:
+    enum NVType : uint8_t
+    {
+        TYPE_UNDEFINED,
+        TYPE_CHAR,
+        TYPE_INT8,
+        TYPE_INT16,
+        TYPE_INT32,
+        TYPE_INT64,
+        TYPE_UINT8,
+        TYPE_UINT16,
+        TYPE_UINT32,
+        TYPE_UINT64,
+        TYPE_FLOAT,
+        TYPE_DOUBLE,
+        TYPE_STRING
+    };
+
+    /*
+     * @brief
+     * Constructor method for creating `NVListItem` instance.
+     */
+    NVListItem();
+
+    /*
+     * @brief
+     * Destructor method for gracefully erasing `NVListItem` instance.
+     */
+    ~NVListItem();
+
+    /*
+     * @brief
+     * Clears all the preallocated memory.
+     */
+    void clear();
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const char val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const int8_t val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const int16_t val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const int32_t val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const int64_t val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const uint8_t val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const uint16_t val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const uint32_t val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const uint64_t val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const float val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const double val);
+
+    /*
+     * @brief
+     * Assigns a value to the item.
+     *
+     * @param
+     * val value to assign
+     */
+    void operator=(const String val);
+
+    /*
+     * @brief
+     * Returns the value in `char` type.
+     *
+     * @return
+     * Value in `char` type.
+     */
+    char asChar();
+
+    /*
+     * @brief
+     * Returns the value in `int8_t` type.
+     *
+     * @return
+     * Value in `int8_t` type.
+     */
+    int8_t asInt8();
+
+    /*
+     * @brief
+     * Returns the value in `int16_t` type.
+     *
+     * @return
+     * Value in `int16_t` type.
+     */
+    int16_t asInt16();
+
+    /*
+     * @brief
+     * Returns the value in `int32_t` type.
+     *
+     * @return
+     * Value in `int32_t` type.
+     */
+    int32_t asInt32();
+
+    /*
+     * @brief
+     * Returns the value in `int64_t` type.
+     *
+     * @return
+     * Value in `inte64_t` type.
+     */
+    int64_t asInt64();
+
+    /*
+     * @brief
+     * Returns the value in `uint8_t` type.
+     *
+     * @return
+     * Value in `uint8_t` type.
+     */
+    uint8_t asUInt8();
+
+    /*
+     * @brief
+     * Returns the value in `uint16_t` type.
+     *
+     * @return
+     * Value in `uint16_t` type.
+     */
+    uint16_t asUInt16();
+
+    /*
+     * @brief
+     * Returns the value in `uint32_t` type.
+     *
+     * @return
+     * Value in `uint32_t` type.
+     */
+    uint32_t asUInt32();
+
+    /*
+     * @brief
+     * Returns the value in `uint64_t` type.
+     *
+     * @return
+     * Value in `uint64_t` type.
+     */
+    uint64_t asUInt64();
+
+    /*
+     * @brief
+     * Returns the value in `float` type.
+     *
+     * @return
+     * Value in `float` type.
+     */
+    float asFloat();
+
+    /*
+     * @brief
+     * Returns the value in `double` type.
+     *
+     * @return
+     * Value in `double` type.
+     */
+    double asDouble();
+
+    /*
+     * @brief
+     * Returns the value in Arduino's `String()` type.
+     *
+     * @return
+     * Value in `String()` type.
+     */
+    String asString();
+
+    NVListItem *next;
+    void *value;
+    uint8_t type;
+};
+
 class NVList
 {
 public:
@@ -24,55 +282,264 @@ public:
      * Adds new item at the end of the list.
      *
      * @param
-     * item item to add
+     * val value to add
      */
-    void append(const T item);
+    void append(const char val);
 
     /*
      * @brief
-     * Adds new item at any position/index of the list.
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const int8_t val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const int16_t val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const int32_t val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const int64_t val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const uint8_t val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const uint16_t val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const uint32_t val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const uint64_t val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const float val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const double val);
+
+    /*
+     * @brief
+     * Adds new item at the end of the list.
+     *
+     * @param
+     * val value to add
+     */
+    void append(const String val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
      *
      * @param
      * index index to choose
      * @param
-     * item item to add
+     * val value to add
      */
-    void insert(const uint16_t index, const T item);
+    void insert(const uint16_t index, const char val);
 
     /*
      * @brief
-     * Gets the item at an index.
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const int8_t val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const int16_t val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const int32_t val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const int64_t val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const uint8_t val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const uint16_t val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const uint32_t val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const uint64_t val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const float val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const double val);
+
+    /*
+     * @brief
+     * Adds new value at any position/index of the list.
+     *
+     * @param
+     * index index to choose
+     * @param
+     * val value to add
+     */
+    void insert(const uint16_t index, const String val);
+
+    /*
+     * @brief
+     * Gets and removes a value at an index.
      *
      * @param
      * index index to choose
      *
      * @return
-     * The item.
+     * The value in `NVListItem` instance.
      */
-    T get(const uint16_t index);
+    NVListItem pop(const uint16_t index);
 
     /*
      * @brief
-     * Sets a new value for an item at an index.
-     *
-     * @param
-     * index index to choose
-     * @param
-     * item new item/value to set
-     */
-    void set(const uint16_t index, const T item);
-
-    /*
-     * @brief
-     * Gets and removes an item at an index.
+     * Gets a value at an index.
      *
      * @param
      * index index to choose
      *
      * @return
-     * The item.
+     * The value in `NVListItem` instance.
      */
-    T pop(const uint16_t index);
+    NVListItem &operator[](const uint16_t index);
 
     /*
      * @brief
@@ -84,161 +551,8 @@ public:
     uint16_t length();
 
 private:
-    struct Node
-    {
-        T item;
-        Node *next = nullptr;
-    };
-
-    Node *head;
+    NVListItem *head;
     uint16_t len;
 };
-
-template <typename T>
-NVList<T>::NVList()
-{
-    this->head = nullptr;
-    this->len = 0;
-}
-
-template <typename T>
-NVList<T>::~NVList()
-{
-    while (this->len > 0)
-    {
-        this->pop(0);
-    }
-}
-
-template <typename T>
-void NVList<T>::append(const T item)
-{
-    NVList<T>::Node *newNode = new NVList<T>::Node;
-    newNode->item = item;
-
-    if (this->len == 0)
-    {
-        this->head = newNode;
-    }
-    else
-    {
-        NVList<T>::Node *tempNode = this->head;
-        for (uint16_t i = 0; i < (this->len - 1); ++i)
-        {
-            tempNode = tempNode->next;
-        }
-        tempNode->next = newNode;
-    }
-
-    this->len++;
-}
-
-template <typename T>
-void NVList<T>::insert(const uint16_t index, const T item)
-{
-    uint16_t idx = (index > this->len) ? this->len : index;
-
-    if (this->len == 0 || idx == this->len)
-    {
-        this->append(item);
-    }
-    else
-    {
-        NVList<T>::Node *tempNode = this->head;
-        NVList<T>::Node *prevNode = nullptr;
-
-        for (uint16_t i = 0; i < idx; ++i)
-        {
-            prevNode = tempNode;
-            tempNode = tempNode->next;
-        }
-
-        NVList<T>::Node *newNode = new NVList<T>::Node;
-        newNode->item = item;
-
-        if (idx == 0)
-        {
-            newNode->next = this->head;
-            this->head = newNode;
-        }
-        else
-        {
-            prevNode->next = newNode;
-            newNode->next = tempNode;
-        }
-
-        this->len++;
-    }
-}
-
-template <typename T>
-T NVList<T>::get(const uint16_t index)
-{
-    uint16_t idx = (index > (this->len - 1)) ? (this->len - 1) : index;
-    NVList<T>::Node *tempNode = this->head;
-
-    for (uint16_t i = 0; (i < idx) && (i < this->len); ++i)
-    {
-        tempNode = tempNode->next;
-    }
-    return tempNode->item;
-}
-
-template <typename T>
-void NVList<T>::set(const uint16_t index, const T item)
-{
-    uint16_t idx = (index > (this->len - 1)) ? (this->len - 1) : index;
-    NVList<T>::Node *tempNode = this->head;
-
-    for (uint16_t i = 0; (i < idx) && (i < this->len); ++i)
-    {
-        tempNode = tempNode->next;
-    }
-    tempNode->item = item;
-}
-
-template <typename T>
-T NVList<T>::pop(const uint16_t index)
-{
-    if (this->len == 0)
-        return 0;
-    uint16_t idx = (index > (this->len - 1)) ? (this->len - 1) : index;
-
-    T resVal;
-    NVList<T>::Node *tempNode = this->head;
-    NVList<T>::Node *prevNode = nullptr;
-
-    for (uint16_t i = 0; i < idx; ++i)
-    {
-        prevNode = tempNode;
-        tempNode = tempNode->next;
-    }
-    resVal = tempNode->item;
-
-    if (idx == 0)
-    {
-        this->head = tempNode->next;
-        delete tempNode;
-    }
-    else if (idx == (this->len - 1))
-    {
-        prevNode->next = nullptr;
-        delete tempNode;
-    }
-    else
-    {
-        prevNode->next = tempNode->next;
-        delete tempNode;
-    }
-
-    this->len--;
-    return resVal;
-}
-
-template <typename T>
-uint16_t NVList<T>::length()
-{
-    return this->len;
-}
 
 #endif
