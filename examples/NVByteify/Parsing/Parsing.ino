@@ -46,7 +46,7 @@ void loop()
     Serial.printf("double[]   : %02X\n", NVBTYPE_ARRAY_DOUBLE);
     Serial.printf("custom     : %02X (for user-defined struct)\n\n", NVBTYPE_CUSTOM);
 
-    // Let us list all the data types, you may implement the type-logic based on your case
+    // Let us list all the data types, you may implement the type-based logic on your case
     Serial.printf("DATA TYPES:\n");
     for (size_t i = 0; i < n; ++i)
     {
